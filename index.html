@@ -1,0 +1,198 @@
+<html>
+
+<head>
+<title> LK BROWSER</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<body>
+  <br><br><br><br><br><br>
+  <div class="h9">
+  <img src="HD.png" alt="dp" class="dp"><br><br>
+  <h1 class="hello0">LK BROWSER</h1>
+
+  </div><br>
+
+
+            
+          
+   <div class="h2">  
+ 
+        </div>
+        <div id="search-container" style="margin-top: 5%;">
+          <div id="search-input-container">
+            <img src="https://assets.codepen.io/1468070/Google+G+Icon.png" alt="" />
+            <input type="text" placeholder="Search anything" id="search" />
+          </div>
+
+          <button id="image-button" onclick="googleSearch();" type="button">
+            <i class="fa-regular fa-search"></i>
+          </button>
+
+          <button id="mic-button" type="button">
+            <i class="fa-regular fa-microphone"></i>
+
+            <div class="main_back"></div>
+          </div>
+          </button>
+
+
+        </div>
+          
+          <br><br><br><br>
+
+
+<div class="hello">
+
+  
+
+  <div class="container">
+    <div class="headline">
+     
+    </div>
+    <div class="social-buttons">        
+    <!-- facebook  Button -->
+            <a href="http://www.facebook.com" target="blank" class="social-margin"> 
+              <div class="social-icon facebook">
+                <i class="fa fa-facebook" aria-hidden="true"></i> 
+              </div>
+            </a>
+            <!-- pinterest Button -->
+            <a href="https://pinterest.com/" target="blank"  class="social-margin">
+              <div class="social-icon pinterest">
+                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+              </div>
+            </a>
+            <!-- LinkedIn Button -->
+            <a href="http://linkedin.com/" class="social-margin" target="blank">
+              <div class="social-icon linkedin">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </div> 
+            </a>
+          <!-- Github Button -->
+            <a href="https://github.com/"  target="blank"  class="social-margin">
+              <div class="social-icon github">
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+              </div>
+            </a>
+            <!-- Youtube Button -->
+            <a href="http://youtube.com/" target="blank"  class="social-margin">
+              <div class="social-icon youtube">
+                <i class="fa fa-youtube" aria-hidden="true"></i>
+              </div> 
+            </a>
+            <!-- Behance Button -->
+            <a href="https://behance.com/"  target="blank" class="social-margin">
+              <div class="social-icon behance">
+                <i class="fa fa-behance" aria-hidden="true"></i>
+              </div>
+            </a>
+            <!-- Soundcloud Button -->
+            <a href="http://soundcloud.com/" target="blank" class="social-margin">
+              <div class="social-icon soundcloud">
+                <i class="fa fa-soundcloud" aria-hidden="true"></i>
+              </div> 
+            </a>
+      <!-- TwitterButton -->
+            <a href="http://twitter.com/" target="blank" class="social-margin">
+              <div class="social-icon twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </div> 
+            </a>
+    </div>
+    </div>
+  
+          
+       
+           
+
+
+            
+        
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+ 
+
+  const urlSpans = document.querySelectorAll('.url');
+
+  urlSpans.forEach(function(urlSpan) {
+    urlSpan.addEventListener('click', function(event) {
+      // Prevent the default behavior of the hyperlink
+      alert('User clicked on URL');
+      event.preventDefault();
+    });
+  });
+
+</script>
+
+<!-- updating the code title and flaticon icon  -->
+<script>
+//  get the elements from the DOM
+
+const savedUrl = localStorage.getItem('url');
+const nameSpan = document.querySelector('.name');
+const urlSpan = document.querySelector('.url');
+const icon = document.querySelector('.fa-stack-overflow');
+const link = document.querySelector('#link');
+
+// listen for changes in the content of the name and url spans
+// nameSpan.addEventListener('input', updateLink);
+urlSpan.addEventListener('input', updateLink);
+
+function updateLink() {
+  // update the text content of the name span with the root domain
+  const domain = new URL('http://' + urlSpan.textContent).hostname.replace('www.', '');
+  link.querySelector('.name').textContent = domain;
+  
+  // update the href of the link
+  link.href = 'http://' + urlSpan.textContent;
+  
+  // update the icon class
+  const iconClass = 'fa-brands fa-' + domain.split('.')[0];
+  icon.className = iconClass;
+
+  
+
+  // save the URL to local storage
+  localStorage.setItem('url', urlSpan.textContent);
+}
+
+// retrieve the saved URL from local storage when the page loads
+window.addEventListener('load', function() {
+  const savedUrl = localStorage.getItem('url');
+  if (savedUrl) {
+    urlSpan.textContent = savedUrl;
+    updateLink();
+  }
+});
+
+</script>
+
+  <script>
+    function googleSearch()
+    {
+        var text=document.getElementById("search").value;
+        var cleanQuery = text.replace(" ","+",text);
+        var url='http://www.google.com/search?q='+cleanQuery;
+    
+        window.location.href=url;
+    }
+    </script>
+  <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
+
+</body>
+</html>
